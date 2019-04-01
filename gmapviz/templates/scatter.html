@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block context %}
+  var circle = {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: 'green',
+    fillOpacity: 1,
+    scale: 2,
+  };
+  /* Data points defined as an array of LatLng objects */
+
+  var coords = [{{ data }}];
+
+  for (var i = 0; i < coords.length; i++) {
+    var latLng = new google.maps.LatLng(coords[i][0],coords[i][1]);
+    var marker = new google.maps.Marker({
+      position: latLng,
+      icon: circle,
+      map: map,
+    });
+  }
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block context %}
+/* Data points defined as an array of LatLng objects */
+var data = [ {{ data }} ];
+
+var heatmap = new google.maps.visualization.HeatmapLayer({
+  data: data,
+  maxIntensity: {{ maxIntensity }},
+  radius: {{ radius }},
+  opacity: {{ opacity }},
+});
+heatmap.setMap(map);
+{% endblock %}
